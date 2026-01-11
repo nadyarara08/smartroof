@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <title>Smart Roof</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo"></div>
+    <div>
+      <h1>Smart Roof</h1>
+      <p>IoT Monitoring & Control System</p>
+    </div>
+  </div>
+
+  <!-- STATUS -->
+  <div class="status-bar">
+    <span class="connected">● Connected</span>
+    <span id="time">--:--:--</span>
+  </div>
+
+  <!-- WEATHER -->
+  <div class="weather-card">
+    <h2 id="weather">CERAH</h2>
+    <p>Kondisi Cuaca Saat Ini</p>
+
+    <div id="roof-status" class="roof-open">
+      ▲ ATAP TERBUKA
+    </div>
+
+    <button id="btn-control">TUTUP ATAP</button>
+  </div>
+
+  <!-- SENSOR -->
+  <div class="sensor-grid">
+    <div class="sensor">
+      <h4>Temperature</h4>
+      <h2 id="temp">-- °C</h2>
+      <span id="temp-status">-</span>
+    </div>
+    <div class="sensor">
+      <h4>Humidity</h4>
+      <h2 id="hum">-- %</h2>
+      <span id="hum-status">-</span>
+    </div>
+    <div class="sensor">
+      <h4>Light</h4>
+      <h2 id="light">--</h2>
+      <span id="light-status">-</span>
+    </div>
+  </div>
+
+  <!-- NOTIFICATION -->
+  <div class="notif">
+    <h3>Riwayat Notifikasi</h3>
+    <ul id="notif-list"></ul>
+  </div>
+
+</div>
+
+<script src="./js/app.js"></script>
+</body>
+</html>

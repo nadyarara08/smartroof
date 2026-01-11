@@ -1,0 +1,4 @@
+# Firebase / GCP credentials
+backend/firebase_key.json
+web-app/firebase.js
+.env
