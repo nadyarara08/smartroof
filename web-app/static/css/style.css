@@ -1,0 +1,485 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-bg: #E6F0EF;
+  --card-bg: #F6F8F9;
+  --primary-blue: #3A4F7A;
+  --accent-teal: #4a8c8c;
+  --roof-open: #2f415a;
+  --roof-closed: #c0392b;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --text-muted: #999;
+  --border-radius: 16px;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  background: var(--primary-bg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  width: 100%;
+  max-width: 430px;
+  padding: 16px;
+  background: var(--primary-bg);
+  min-height: 100vh;
+}
+
+/* ========== HEADER ========== */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-blue);
+  box-shadow: var(--shadow-sm);
+}
+
+.logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.header > div {
+  flex: 1;
+}
+
+.header h1 {
+  font-size: 22px;
+  margin-bottom: 2px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.header p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* ========== STATUS BAR ========== */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 13px;
+  padding: 0 4px;
+}
+
+.status-bar .disconnected {
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+.status-bar .connected {
+  color: #27ae60;
+  font-weight: 500;
+}
+
+#time {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ========== WEATHER CARD ========== */
+.weather-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.weather-icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.weather-card h2 {
+  font-size: 28px;
+  margin-bottom: 4px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+
+.weather-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.roof-indicator {
+  padding: 14px;
+  border-radius: 12px;
+  margin: 16px 0;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.roof-open {
+  background: var(--roof-open);
+  color: white;
+}
+
+.roof-closed {
+  background: var(--roof-closed);
+  color: white;
+}
+
+/* ========== BUTTON ========== */
+button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-sm);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.btn-close {
+  background: var(--roof-closed);
+  color: white;
+}
+
+.btn-close:hover {
+  background: #a82e1f;
+}
+
+.btn-open {
+  background: var(--roof-open);
+  color: white;
+}
+
+.btn-open:hover {
+  background: #263648;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ========== SENSOR GRID ========== */
+.sensor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.sensor-card {
+  background: var(--card-bg);
+  padding: 14px 10px;
+  border-radius: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 130px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.sensor-card:active {
+  transform: scale(0.98);
+}
+
+.sensor-card h4 {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sensor-value {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  margin: 10px 0;
+}
+
+#temp-value, #hum-value, #light-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sensor-value .unit {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.sensor-status {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: auto;
+}
+
+.status-label {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-text {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ========== NOTIFICATION CARD ========== */
+.notification-card {
+  background: var(--card-bg);
+  padding: 16px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.notification-card h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ========== CHART CARD ========== */
+.chart-card {
+  background: var(--card-bg);
+  padding: 16px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.chart-header h3 {
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.chart-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.chart-tab {
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 6px;
+  background: #e0e0e0;
+  color: var(--text-secondary);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.chart-tab.active {
+  background: var(--accent-teal);
+  color: white;
+}
+
+.chart-tab:hover:not(.active) {
+  background: #d0d0d0;
+}
+
+#sensor-chart {
+  width: 100% !important;
+  height: 200px !important;
+}
+
+/* ========== NOTIFICATION CARD ========== */
+.notification-card {
+  background: var(--card-bg);
+  padding: 16px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.notif-list {
+  max-height: 240px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notif-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notif-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.notif-item {
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: slideIn 0.3s ease;
+}
+
+/* Notif type colors */
+.notif-item.warning {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+}
+
+.notif-item.danger {
+  background: #f8d7da;
+  border-left: 4px solid #dc3545;
+}
+
+.notif-item.success {
+  background: #d4edda;
+  border-left: 4px solid #28a745;
+}
+
+.notif-item.info {
+  background: #d1ecf1;
+  border-left: 4px solid #17a2b8;
+}
+
+.notif-item.default {
+  background: #eef3d5;
+  border-left: 4px solid #a8c068;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notif-item .notif-time {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.notif-item .notif-text {
+  color: var(--text-primary);
+}
+
+.notif-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 30px 20px;
+  font-size: 13px;
+}
+
+/* ========== LOADING ========== */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 380px) {
+  .sensor-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .sensor-card {
+    min-height: 100px;
+  }
+  
+  .header h1 {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 431px) {
+  .app {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    border-radius: 20px;
+    margin: 20px;
+  }
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="theme-color" content="#3A4F7A">
+  <title>Smart Roof</title>
+
+  <link rel="manifest" href="../static/manifest.json">
+  <link rel="stylesheet" href="../static/css/style.css">
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+        <defs>
+          <linearGradient id="hexBg" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#4a8c8c;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#38757a;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <path d="M100,20 L170,60 L170,140 L100,180 L30,140 L30,60 Z" fill="url(#hexBg)" stroke="#243a52" stroke-width="4"/>
+        <path d="M100,50 L150,80 L150,140 L100,170 L50,140 L50,80 Z" fill="#243a52" opacity="0.3"/>
+        <path d="M70,90 L90,75 L110,90 L90,105 Z" fill="#d4a438" stroke="#fff" stroke-width="2"/>
+        <path d="M60,100 L80,115 L100,130 L120,115 L140,100" stroke="#fff" stroke-width="3" fill="none"/>
+      </svg>
+    </div>
+    <div>
+      <h1>Smart Roof</h1>
+      <p>IoT Monitoring & Control System</p>
+    </div>
+  </div>
+
+  <!-- STATUS BAR -->
+  <div class="status-bar">
+    <span id="connection-status" class="disconnected">● Connecting...</span>
+    <span id="mode-indicator" class="mode-badge auto">AUTO</span>
+    <span id="time">--:--:--</span>
+  </div>
+
+  <!-- WEATHER CARD -->
+  <div class="weather-card">
+    <div class="weather-icon" id="weather-icon">☀️</div>
+    <h2 id="weather-status">CERAH</h2>
+    <p class="weather-subtitle">Kondisi Cuaca Saat Ini</p>
+
+    <div id="roof-status" class="roof-indicator roof-open">
+      ▲ ATAP TERBUKA
+    </div>
+
+    <button id="btn-control" class="btn-close">TUTUP ATAP</button>
+    
+    <!-- ✅ NEW: MODE TOGGLE BUTTON -->
+    <button id="btn-mode" class="btn-mode mode-auto">🤖 MODE: AUTO</button>
+  </div>
+
+  <!-- SENSOR GRID -->
+  <div class="sensor-grid">
+    <div class="sensor-card">
+      <h4>Temperature</h4>
+      <div class="sensor-value">
+        <span id="temp-value">--</span>
+        <span class="unit">°C</span>
+      </div>
+      <div class="sensor-status" id="temp-status">
+        <span class="status-label">Status</span>
+        <span class="status-text">-</span>
+      </div>
+    </div>
+
+    <div class="sensor-card">
+      <h4>Humidity</h4>
+      <div class="sensor-value">
+        <span id="hum-value">--</span>
+        <span class="unit">%</span>
+      </div>
+      <div class="sensor-status" id="hum-status">
+        <span class="status-label">Status</span>
+        <span class="status-text">-</span>
+      </div>
+    </div>
+
+    <div class="sensor-card">
+      <h4>Light Intensity</h4>
+      <div class="sensor-value">
+        <span id="light-value">--</span>
+      </div>
+      <div class="sensor-status" id="light-status">
+        <span class="status-label">Ambient light</span>
+        <span class="status-text">-</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORICAL CHART -->
+  <div class="chart-card">
+    <div class="chart-header">
+      <h3>Riwayat 24 Jam</h3>
+      <div class="chart-tabs">
+        <button class="chart-tab active" data-chart="temp">Suhu</button>
+        <button class="chart-tab" data-chart="hum">Kelembapan</button>
+        <button class="chart-tab" data-chart="light">Cahaya</button>
+      </div>
+    </div>
+    <canvas id="sensor-chart"></canvas>
+  </div>
+
+  <!-- NOTIFICATION HISTORY -->
+  <div class="notification-card">
+    <h3>Riwayat Notifikasi</h3>
+    <div id="notif-list" class="notif-list">
+      <!-- Notifications will be inserted here -->
+    </div>
+  </div>
+
+</div>
+
+<!-- Loading Overlay -->
+<div id="loading" class="loading-overlay" style="display: none;">
+  <div class="loading-spinner"></div>
+</div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>
