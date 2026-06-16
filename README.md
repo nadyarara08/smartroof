@@ -62,3 +62,31 @@ Project ini dibuat menggunakan:
 ---
 
 ## 📂 Project Structure
+
+SmartRoof-WebApp/
+│
+├── main.html # Halaman utama dashboard
+├── style.css # Styling dan tampilan UI
+└── script.js # Logic aplikasi dan simulasi IoT
+
+---
+
+## 🚀 How To Run
+
+1. Clone repository
+
+git clone https://github.com/username/SmartRoof-WebApp.git
+
+2. Masuk ke folder project
+cd SmartRoof-WebApp
+Jalankan file:
+main.html
+
+## ⚙️ Cara Kerja Sistem
+
+Saat aplikasi dijalankan, sistem melakukan inisialisasi data sensor.
+JavaScript membaca nilai sensor (simulasi).
+Data ditampilkan ke dashboard.
+Kondisi cuaca akan mempengaruhi tampilan dashboard.
+Pengguna dapat mengubah status atap melalui kontrol yang tersedia.
+Sistem memberikan notifikasi berdasarkan perubahan kondisi.
