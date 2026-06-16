@@ -73,9 +73,7 @@ SmartRoof-WebApp/
 
 ## 🚀 How To Run
 
-1. Clone repository
-
-git clone https://github.com/username/SmartRoof-WebApp.git
+1. Clone repository, git clone https://github.com/username/SmartRoof-WebApp.git
 
 2. Masuk ke folder project
 cd SmartRoof-WebApp
